@@ -14,7 +14,7 @@ function ModifyArtistsModalContent({ onCancel }) {
   }, []);
 
   const fetchArtists = () => {
-    axios.get("https://server-pearl-three-79.vercel.app:3001/getArtists")
+    axios.get("https://server-pearl-three-79.vercel.app/getArtists")
       .then(result => {
         setArtists(result.data);
       })
@@ -46,7 +46,7 @@ function ModifyArtistsModalContent({ onCancel }) {
       MonthlyListeners: parseInt(monthlyListeners, 10) || 0
     };
 
-    axios.patch(`https://server-pearl-three-79.vercel.app:3001/updateArtist/${editingArtist._id}`, updatedArtist)
+    axios.patch(`https://server-pearl-three-79.vercel.app/updateArtist/${editingArtist._id}`, updatedArtist)
       .then(result => {
         fetchArtists();
         handleCancelEdit();
@@ -57,7 +57,7 @@ function ModifyArtistsModalContent({ onCancel }) {
   };
 
   const handleDeleteArtist = (artistId) => {
-    axios.delete(`https://server-pearl-three-79.vercel.app:3001/deleteArtist/${artistId}`)
+    axios.delete(`https://server-pearl-three-79.vercel.app/deleteArtist/${artistId}`)
       .then(result => {
         fetchArtists();
         if (editingArtist && editingArtist._id === artistId) {

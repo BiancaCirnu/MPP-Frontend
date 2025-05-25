@@ -18,7 +18,7 @@ function VenueModalContent({ onVenueAdded, onCancel }) {
       Country: country
     };
     
-    axios.post("https://server-pearl-three-79.vercel.app:3001/createVenue", venueData)
+    axios.post("https://server-pearl-three-79.vercel.app/createVenue", venueData)
       .then(result => {
         onVenueAdded(venueData);
       })
