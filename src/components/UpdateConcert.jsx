@@ -27,7 +27,7 @@ function UpdateConcert() {
   useEffect(() => {
     console.log("Fetching concert with ID:", id);
    
-    axios.get('http://18.193.116.89:3001/getConcert/' + id)
+    axios.get('https://server-pearl-three-79.vercel.app:3001/getConcert/' + id)
       .then(result => {
         console.log("API Response:", result.data);
        
@@ -43,7 +43,7 @@ function UpdateConcert() {
   }, [id]);
   
   function fetchArtists() {
-    axios.get("http://18.193.116.89:3001/getArtists")
+    axios.get("https://server-pearl-three-79.vercel.app:3001/getArtists")
       .then(result => {
         const artistData = result.data;
         setArtists(artistData.map(artist => artist.Name));
@@ -54,7 +54,7 @@ function UpdateConcert() {
   }
 
   function fetchVenues() {
-    axios.get("http://18.193.116.89:3001/getVenues")
+    axios.get("https://server-pearl-three-79.vercel.app:3001/getVenues")
       .then(result => {
         const venuesData = result.data;
         setVenues(venuesData.map(venue => venue.Name));
@@ -111,7 +111,7 @@ function UpdateConcert() {
   const handleSubmit = (e) => {
     e.preventDefault();
    
-    axios.patch("http://18.193.116.89:3001/updateConcert/" + id, { 
+    axios.patch("https://server-pearl-three-79.vercel.app:3001/updateConcert/" + id, { 
       Artist: artist, 
       Venue: venue, 
       Date: date, 

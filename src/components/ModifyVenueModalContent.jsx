@@ -15,7 +15,7 @@ function ModifyVenueModalContent({ onCancel }) {
   }, []);
 
   const fetchVenues = () => {
-    axios.get("http://18.193.116.89:3001/getVenues")
+    axios.get("https://server-pearl-three-79.vercel.app:3001/getVenues")
       .then(result => {
         setVenues(result.data);
       })
@@ -51,7 +51,7 @@ function ModifyVenueModalContent({ onCancel }) {
       Country: country
     };
 
-    axios.patch(`http://18.193.116.89:3001/updateVenue/${editingVenue._id}`, updatedVenue)
+    axios.patch(`https://server-pearl-three-79.vercel.app:3001/updateVenue/${editingVenue._id}`, updatedVenue)
       .then(result => {
         alert("Venue updated successfully!");
         fetchVenues();
@@ -64,7 +64,7 @@ function ModifyVenueModalContent({ onCancel }) {
   };
 
   const handleDeleteVenue = (venueId) => {
-    axios.delete(`http://18.193.116.89:3001/deleteVenue/${venueId}`)
+    axios.delete(`https://server-pearl-three-79.vercel.app:3001/deleteVenue/${venueId}`)
       .then(result => {
         fetchVenues();
         if (editingVenue && editingVenue._id === venueId) {

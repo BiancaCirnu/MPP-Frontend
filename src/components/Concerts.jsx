@@ -20,7 +20,7 @@ function Concerts() {
   const [artists, setArtists] = useState([]);
 
   useEffect(() => {
-    axios.get('http://18.193.116.89:3001/getConcerts')
+    axios.get('https://server-9gutn6tzh-biancas-projects-5418afa9.vercel.app:3001/getConcerts')
       .then(result => {
         const concertsData = result.data;
         setConcerts(concertsData);
@@ -33,7 +33,7 @@ function Concerts() {
   }, []);
 
   useEffect(()=>{
-    axios.get("http://18.193.116.89 :3001/getArtists")
+    axios.get("https://server-9gutn6tzh-biancas-projects-5418afa9.vercel.app:3001/getArtists")
     .then(result => {
         const artistData = result.data;
         setArtists(artistData.map(artist=>artist.Name));
@@ -44,7 +44,7 @@ function Concerts() {
   }, []);
 
   useEffect(()=>{
-    axios.get("http://18.193.116.89 :3001/getVenues")
+    axios.get("https://server-9gutn6tzh-biancas-projects-5418afa9.vercel.app:3001/getVenues")
     .then(result => {
         const venuesData = result.data;
         setVenues(venuesData.map(venue=>venue.Name));
@@ -101,7 +101,7 @@ function Concerts() {
 
   const handleDelete = (id) => {
     if (window.confirm("Are you sure you want to delete this concert?")) {
-      axios.delete(`http://18.193.116.89:3001/deleteConcert/${id}`)
+      axios.delete(`https://server-pearl-three-79.vercel.app:3001/deleteConcert/${id}`)
         .then(response => {
           console.log("Delete response:", response.data);
           const updatedConcerts = concerts.filter(c => c._id !== id);

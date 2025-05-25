@@ -16,7 +16,7 @@ function ArtistModalContent({ onArtistAdded, onCancel }) {
       MonthlyListeners: monthlyListeners
     };
     
-    axios.post("http://18.193.116.89:3001/createArtist", artistData)
+    axios.post("https://server-pearl-three-79.vercel.app:3001/createArtist", artistData)
       .then(result => {
         onArtistAdded(artistData);
       })
