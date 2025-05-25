@@ -18,7 +18,7 @@ function VenueModalContent({ onVenueAdded, onCancel }) {
       Country: country
     };
     
-    axios.post(process.env.SERVER_URL+"createVenue", venueData)
+    axios.post(import.meta.env.VITE_SERVER_URL+"createVenue", venueData)
       .then(result => {
         onVenueAdded(venueData);
       })

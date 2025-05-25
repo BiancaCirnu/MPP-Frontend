@@ -14,7 +14,7 @@ function ModifyArtistsModalContent({ onCancel }) {
   }, []);
 
   const fetchArtists = () => {
-    axios.get(process.env.SERVER_URL+"getArtists")
+    axios.get(import.meta.env.VITE_SERVER_URL+"getArtists")
       .then(result => {
         setArtists(result.data);
       })
@@ -46,7 +46,7 @@ function ModifyArtistsModalContent({ onCancel }) {
       MonthlyListeners: parseInt(monthlyListeners, 10) || 0
     };
 
-    axios.patch(process.env.SERVER_URL + `updateArtist/${editingArtist._id}`, updatedArtist)
+    axios.patch(import.meta.env.VITE_SERVER_URL + `updateArtist/${editingArtist._id}`, updatedArtist)
       .then(result => {
         fetchArtists();
         handleCancelEdit();
@@ -57,7 +57,7 @@ function ModifyArtistsModalContent({ onCancel }) {
   };
 
   const handleDeleteArtist = (artistId) => {
-    axios.delete(process.env.SERVER_URL+`deleteArtist/${artistId}`)
+    axios.delete(import.meta.env.VITE_SERVER_URL+`deleteArtist/${artistId}`)
       .then(result => {
         fetchArtists();
         if (editingArtist && editingArtist._id === artistId) {

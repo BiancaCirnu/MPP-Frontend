@@ -16,7 +16,7 @@ function ArtistModalContent({ onArtistAdded, onCancel }) {
       MonthlyListeners: monthlyListeners
     };
     
-    axios.post(process.env.SERVER_URL+"createArtist", artistData)
+    axios.post(import.meta.env.VITE_SERVER_URL+"createArtist", artistData)
       .then(result => {
         onArtistAdded(artistData);
       })

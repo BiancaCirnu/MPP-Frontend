@@ -20,7 +20,7 @@ function Concerts() {
   const [artists, setArtists] = useState([]);
 
   useEffect(() => {
-    axios.get(process.env.SERVER_URL+ 'getConcerts')
+    axios.get(import.meta.env.VITE_SERVER_URL+ 'getConcerts')
       .then(result => {
         const concertsData = result.data;
         setConcerts(concertsData);
@@ -33,7 +33,7 @@ function Concerts() {
   }, []);
 
   useEffect(()=>{
-    axios.get(process.env.SERVER_URL+"getArtists")
+    axios.get(import.meta.env.VITE_SERVER_URL+"getArtists")
     .then(result => {
         const artistData = result.data;
         setArtists(artistData.map(artist=>artist.Name));
@@ -44,7 +44,7 @@ function Concerts() {
   }, []);
 
   useEffect(()=>{
-    axios.get(process.env.SERVER_URL+"getVenues")
+    axios.get(import.meta.env.VITE_SERVER_URL+"getVenues")
     .then(result => {
         const venuesData = result.data;
         setVenues(venuesData.map(venue=>venue.Name));
@@ -101,7 +101,7 @@ function Concerts() {
 
   const handleDelete = (id) => {
     if (window.confirm("Are you sure you want to delete this concert?")) {
-      axios.delete(process.env.SERVER_URL+`deleteConcert/${id}`)
+      axios.delete(import.meta.env.VITE_SERVER_URL+`deleteConcert/${id}`)
         .then(response => {
           console.log("Delete response:", response.data);
           const updatedConcerts = concerts.filter(c => c._id !== id);
