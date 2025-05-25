@@ -17,7 +17,7 @@ function LogInPage() {
 
         try {
             // Send login credentials to backend
-            const response = await axios.post('https://server-pearl-three-79.vercel.app/login', {
+            const response = await axios.post(process.env.SERVER_URL+'login', {
                 username: username,
                 password: password
             });

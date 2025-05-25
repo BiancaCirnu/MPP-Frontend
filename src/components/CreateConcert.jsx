@@ -23,7 +23,7 @@ function CreateConcert() {
  
   const submit = (e) => {
     e.preventDefault();
-    axios.post("https://server-pearl-three-79.vercel.app/createConcert", { Artist: artist, Venue: venue, Date: date, PosterURL: posterURL, Description: description})
+    axios.post(process.env.SERVER_URL+"createConcert", { Artist: artist, Venue: venue, Date: date, PosterURL: posterURL, Description: description})
       .then(result => {
         console.log(result);
         alert("Concert added!");
@@ -33,7 +33,7 @@ function CreateConcert() {
   };
  
     function fetchArtists() {
-    axios.get("https://server-pearl-three-79.vercel.app/getArtists")
+    axios.get(process.env.SERVER_URL+"getArtists")
       .then(result => {
         const artistData = result.data;
         setArtists(artistData.map(artist => artist.Name));
@@ -44,7 +44,7 @@ function CreateConcert() {
   }
 
   function fetchVenues() {
-    axios.get("https://server-pearl-three-79.vercel.app/getVenues")
+    axios.get(process.env.SERVER_URL+"getVenues")
       .then(result => {
         const venuesData = result.data;
         setVenues(venuesData.map(venue => venue.Name));
