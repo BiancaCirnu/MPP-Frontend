@@ -101,7 +101,7 @@ function Concerts() {
 
   const handleDelete = (id) => {
     if (window.confirm("Are you sure you want to delete this concert?")) {
-      axios.delete(import.meta.env.VITE_SERVER_URL+`deleteConcert/${id}`)
+      axios.delete(import.meta.env.VITE_SERVER_URL+`/deleteConcert/${id}`)
         .then(response => {
           console.log("Delete response:", response.data);
           const updatedConcerts = concerts.filter(c => c._id !== id);
