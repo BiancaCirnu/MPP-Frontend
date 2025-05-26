@@ -27,7 +27,7 @@ function UpdateConcert() {
   useEffect(() => {
     console.log("Fetching concert with ID:", id);
    
-    axios.get('https://server-pearl-three-79.vercel.app/getConcert/' + id)
+    axios.get(import.meta.env.VITE_SERVER_URL + '/getConcert/' + id)
       .then(result => {
         console.log("API Response:", result.data);
        
@@ -43,7 +43,7 @@ function UpdateConcert() {
   }, [id]);
   
   function fetchArtists() {
-    axios.get(process.env.VITE_SERVER_URL+"getArtists")
+    axios.get(import.meta.env.VITE_SERVER_URL+"/getArtists")
       .then(result => {
         const artistData = result.data;
         setArtists(artistData.map(artist => artist.Name));
@@ -54,7 +54,7 @@ function UpdateConcert() {
   }
 
   function fetchVenues() {
-    axios.get(process.env.VITE_SERVER_URL+"getVenues")
+    axios.get(import.meta.env.VITE_SERVER_URL+"/getVenues")
       .then(result => {
         const venuesData = result.data;
         setVenues(venuesData.map(venue => venue.Name));
@@ -111,7 +111,7 @@ function UpdateConcert() {
   const handleSubmit = (e) => {
     e.preventDefault();
    
-    axios.patch(process.env.VITE_SERVER_URL+"updateConcert/" + id, { 
+    axios.patch(process.env.VITE_SERVER_URL+"/updateConcert/" + id, { 
       Artist: artist, 
       Venue: venue, 
       Date: date, 
